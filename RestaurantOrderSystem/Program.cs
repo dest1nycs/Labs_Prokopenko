@@ -13,7 +13,7 @@ namespace RestaurantOrderSystem
             restaurant.AddMenuItem(new Drink("Кава", 60, 200, false));
             restaurant.AddMenuItem(new Drink("Червоне вино", 150, 150, true));
 
-            
+
             restaurant.PrintMenu();
             Console.WriteLine();
 
@@ -33,7 +33,7 @@ namespace RestaurantOrderSystem
             Console.WriteLine();
             order1.PrintDetails();
 
-            
+
             Order order2 = restaurant.CreateOrder(3);
             order2.AddItem(new Dish("Салат овочевий", 90, "Салат"));
 
@@ -41,7 +41,7 @@ namespace RestaurantOrderSystem
             restaurant.PrintAllOrders();
             Console.WriteLine();
 
-            
+
             Console.WriteLine("Пошук замовлення з ID = 1:");
             Order found = restaurant.FindOrderById(1);
             if (found != null)
@@ -53,38 +53,6 @@ namespace RestaurantOrderSystem
                 Console.WriteLine("Замовлення не знайдено.");
             }
 
-            Console.WriteLine();
-
-            
-            Console.WriteLine("=== Демонстрація upcast / downcast ===");
-
-            
-            IMenuItem item = restaurant.GetFirstMenuItem();
-
-            if (item != null)
-            {
-                Console.WriteLine($"Upcast: тепер це IMenuItem з назвою: {item.Name}");
-
-                
-                Drink drink = item as Drink;
-                if (drink != null)
-                {
-                    Console.WriteLine($"Це напій. Об'єм: {drink.VolumeMl} мл");
-                }
-                else
-                {
-                    
-                    Dish dish = item as Dish;
-                    if (dish != null)
-                    {
-                        Console.WriteLine($"Це страва. Категорія: {dish.Category}");
-                    }
-                }
-            }
-
-            Console.WriteLine();
-            Console.WriteLine("Натисніть будь-яку клавішу, щоб завершити...");
-            Console.ReadKey();
         }
     }
 }
